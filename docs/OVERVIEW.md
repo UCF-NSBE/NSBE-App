@@ -37,7 +37,7 @@ Live deployment: frontend on Vercel, backend on Railway, database and auth via S
 | Animations | `framer-motion`, `canvas-confetti` | — |
 | Toasts | `sonner` | 2 |
 | In-memory cache | `node-cache` | 5 |
-| Node runtime | Node.js | 20.x |
+| Node runtime | Node.js | 22.x |
 | Container | Docker (multi-stage, `node:22-alpine`) | — |
 
 **Rationale highlights:**
@@ -150,7 +150,7 @@ Controllers handle HTTP routing and input validation via DTOs and the global `Va
 ## Setup & Install Steps
 
 ### Prerequisites
-- Node.js 20.x, npm >= 9.0.0
+- Node.js 22.x, npm >= 9.0.0
 - Docker and Docker Compose
 - A Supabase project with Auth enabled and a Storage bucket named `profile-photos` (public)
 
