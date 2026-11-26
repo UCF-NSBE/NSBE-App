@@ -46,6 +46,23 @@ async function main() {
   });
   console.log('✅ Created member:', member.email);
 
+  // Admin (not super_admin) test account for apprentices, so they can try
+  // officer tools without role-management powers. The matching Supabase Auth
+  // user is created separately. Once it exists, set `id` to its Supabase UID
+  // (as above): without it, the first sign-in only links to this row if
+  // Supabase reports the email as verified.
+  const apprenticeAdmin = await prisma.member.upsert({
+    where: { email: 'apprentice@test.com' },
+    update: { role: 'admin' },
+    create: {
+      email: 'apprentice@test.com',
+      firstName: 'Apprentice',
+      lastName: 'Admin',
+      role: 'admin',
+    },
+  });
+  console.log('✅ Created admin:', apprenticeAdmin.email);
+
   // Create some sample events
   const event1 = await prisma.event.create({
     data: {

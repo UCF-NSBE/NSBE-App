@@ -56,7 +56,7 @@ The frontend is also an installable PWA (`manifest.json`, NSBE green `#00843D`) 
 | Storage | Supabase Storage (`profile-photos` bucket) |
 | Caching | `node-cache` (in-process, backend) |
 | QR | `qrcode` (generate), `html5-qrcode` (scan) |
-| Runtime | Node.js 20.x, npm >= 9.0.0 |
+| Runtime | Node.js 22.x, npm >= 9.0.0 |
 
 **Why this split:** NestJS organizes the API into feature modules (events, attendance, friends, points, and so on). Prisma keeps the schema as the source of truth. Supabase handles credentials and object storage so the API only has to verify JWTs and persist chapter data.
 
@@ -104,7 +104,7 @@ Every backend feature follows **controller → service → Prisma**. `PrismaModu
 
 ## Prerequisites
 
-- Node.js **20.x** (see `.node-version`; currently `20.11.1`) and npm **>= 9.0.0**
+- Node.js **22.x** (see `.node-version`; currently `22.11.0`) and npm **>= 9.0.0**
 - Docker Desktop (for local PostgreSQL, optional for the API itself)
 - A [Supabase](https://supabase.com/) project with:
   - Auth enabled (email/password; Google and Discord providers if you want social login)
@@ -118,8 +118,8 @@ Every backend feature follows **controller → service → Prisma**. `PrismaModu
 Recommended for development: Docker for Postgres, Nest and Next running on the host.
 
 ```bash
-git clone https://github.com/tomiwaaluko/nsbe-ucf-eventtracker.git
-cd nsbe-ucf-eventtracker
+git clone https://github.com/UCF-NSBE/NSBE-App.git
+cd NSBE-App
 
 cp backend/.env.example backend/.env
 cp frontend/.env.example frontend/.env.local
