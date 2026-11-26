@@ -44,9 +44,14 @@ services:
       # look up in this repo and use to mint an admin token.
       #
       # `:?` makes compose refuse to start with a clear message instead.
-      JWT_SECRET: ${JWT_SECRET:?JWT_SECRET must be set (generate with: openssl rand -base64 48)}
+      #
+      # Quoted because the message contains ": ", which YAML otherwise reads as
+      # a mapping and rejects the whole file. Note that compose interpolates
+      # every service, so even `make docker-db-up` (Postgres only) needs these
+      # two set in backend/.env.
+      JWT_SECRET: "${JWT_SECRET:?JWT_SECRET must be set (generate with: openssl rand -base64 48)}"
       JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-7d}
-      SUPABASE_JWT_SECRET: ${SUPABASE_JWT_SECRET:?SUPABASE_JWT_SECRET must be set (copy from your Supabase project settings)}
+      SUPABASE_JWT_SECRET: "${SUPABASE_JWT_SECRET:?SUPABASE_JWT_SECRET must be set (copy from your Supabase project settings)}"
       # OAuth credentials (add your actual values in .env)
       GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
       GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
